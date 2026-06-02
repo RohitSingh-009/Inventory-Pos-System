@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  font-family: 'Segoe UI', Trebuchet MS, sans-serif;
+  background-color: #dce1e6;
+  color: #f0f4f8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(30, 58, 138, 0.15), transparent 30%),
+    linear-gradient(180deg, #a1a5aa 0%, #afbbc5 100%);
+  color: #f0f4f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(245, 158, 11, 0.35);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(189, 198, 207, 0.9);
+}
