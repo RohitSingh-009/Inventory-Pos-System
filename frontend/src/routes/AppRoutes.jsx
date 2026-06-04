@@ -10,6 +10,7 @@ import Receipt from "../pages/Receipt";
 import EditProduct from "../pages/EditProduct";
 import AdminRoute from "./AdminRoute";
 import Reports from "../pages/Reports";
+import ExpiryManagement from "../pages/ExpiryManagement";
 
 function AppRoutes() {
   return (
@@ -100,6 +101,18 @@ function AppRoutes() {
                 </ProtectedRoute>
             }
         />  
+
+        <Route
+            path="/expiry"
+            element={
+            <ProtectedRoute>
+            <AdminRoute>
+              <ExpiryManagement />
+            </AdminRoute>
+            </ProtectedRoute>
+            }
+        />
+
 
         </Routes>
     </BrowserRouter>

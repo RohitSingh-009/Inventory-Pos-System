@@ -35,11 +35,11 @@ def create_product(
     )
 
     db.add(product)
-
     db.commit()
 
     return {
-        "message": "Product Created"
+        "message": "Product Created",
+        "product_id": product.id
     }
     
     
@@ -126,3 +126,23 @@ def get_product_by_barcode(
         )
 
     return product
+
+@router.delete("/{product_id}")
+def delete_product(
+    product_id: int,
+    db: Session = Depends(get_db)
+):
+    product = db.query(Product).filter(
+        Product.id == product_id
+    ).first()
+
+    if not product:
+        raise HTTPException(
+            status_code=404,
+            detail="Product not found"
+        )
+
+    db.delete(product)
+    db.commit()
+
+    return {"message": "Product deleted successfully"}

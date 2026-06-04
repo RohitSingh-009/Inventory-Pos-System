@@ -25,52 +25,52 @@ function Login() {
       } else {
         navigate("/pos");
       }
-    } catch (error) {
+    } catch {
       alert("Invalid Credentials");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md rounded-[2rem] border border-amber-500/20 bg-blue-900/70 p-8 shadow-2xl shadow-blue-950/60 backdrop-blur-xl">
+    <div className="min-h-screen bg-slate-100 flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md rounded-4xl border border-slate-200 bg-white p-8 shadow-lg">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-gradient-to-br from-amber-400 to-amber-500 text-3xl shadow-xl">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-blue-700 text-3xl text-white shadow-md">
             🛍️
           </div>
-          <h1 className="text-3xl font-semibold text-white">Welcome Back</h1>
-          <p className="mt-2 text-sm text-amber-100/80">Manage your inventory and sales with ease.</p>
+          <h1 className="text-3xl font-semibold text-slate-950">Welcome back</h1>
+          <p className="mt-2 text-sm text-slate-500">Login and manage your inventory, sales, and reports.</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
-          <label className="block text-sm font-medium text-amber-50">
+          <label className="block text-sm font-medium text-slate-700">
             Email
             <input
               type="email"
               placeholder="your@email.com"
-              className="mt-2 w-full rounded-3xl border border-blue-700/50 bg-blue-950/80 px-4 py-3 text-white placeholder-blue-300/50 shadow-inner outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30"
+              className="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-100"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
 
-          <label className="block text-sm font-medium text-amber-50">
+          <label className="block text-sm font-medium text-slate-700">
             Password
             <input
               type="password"
               placeholder="Enter your password"
-              className="mt-2 w-full rounded-3xl border border-blue-700/50 bg-blue-950/80 px-4 py-3 text-white placeholder-blue-300/50 shadow-inner outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30"
+              className="mt-2 w-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-100"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
 
-          <button className="w-full rounded-3xl bg-gradient-to-r from-amber-400 to-amber-500 px-5 py-3 text-sm font-semibold text-blue-900 shadow-lg shadow-amber-400/30 transition hover:brightness-110">
+          <button className="w-full rounded-3xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-blue-800">
             Login
           </button>
         </form>
 
-        <div className="mt-6 rounded-3xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm text-amber-100/80">
-          💡 Tip: Use your admin credentials to manage products and view reports.
+        <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
+          Tip: Use your admin credentials to manage products and view reports.
         </div>
       </div>
     </div>

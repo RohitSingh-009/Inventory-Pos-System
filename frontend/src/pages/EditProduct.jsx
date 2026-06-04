@@ -9,17 +9,17 @@ function EditProduct() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetchProduct();
-  }, []);
+    const fetchProduct = async () => {
+      try {
+        const response = await api.get(`/products/${id}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const fetchProduct = async () => {
-    try {
-      const response = await api.get(`/products/${id}`);
-      setProduct(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    fetchProduct();
+  }, [id]);
 
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
@@ -43,14 +43,14 @@ function EditProduct() {
     }
   };
 
-  if (!product) return <div className="min-h-screen flex items-center justify-center text-amber-100/70">Loading product...</div>;
+  if (!product) return <div className="min-h-screen flex items-center justify-center text-slate-300">Loading product...</div>;
 
   return (
     <AdminLayout>
-      <div className="rounded-[2rem] border border-amber-500/20 bg-blue-800/50 p-6 shadow-2xl shadow-blue-950/20 backdrop-blur-xl">
+      <div className="rounded-4xl border border-slate-200 bg-white p-6 shadow-lg">
         <div className="mb-6">
-          <h1 className="text-3xl font-semibold text-white">Edit Product</h1>
-          <p className="mt-2 text-amber-100/70">Update the item details and stock levels.</p>
+          <h1 className="text-3xl font-semibold text-slate-950">Edit Product</h1>
+          <p className="mt-2 text-slate-500">Update the item details and stock levels.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
@@ -58,35 +58,35 @@ function EditProduct() {
             name="name"
             value={product.name}
             onChange={handleChange}
-            className="col-span-full rounded-3xl border border-blue-700/50 bg-blue-950/80 px-4 py-3 text-amber-50 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+            className="col-span-full rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-100"
           />
           <input
             name="buying_price"
             value={product.buying_price}
             onChange={handleChange}
-            className="rounded-3xl border border-blue-700/50 bg-blue-950/80 px-4 py-3 text-amber-50 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+            className="rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-100"
           />
           <input
             name="selling_price"
             value={product.selling_price}
             onChange={handleChange}
-            className="rounded-3xl border border-blue-700/50 bg-blue-950/80 px-4 py-3 text-amber-50 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+            className="rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-100"
           />
           <input
             name="stock_quantity"
             value={product.stock_quantity}
             onChange={handleChange}
-            className="rounded-3xl border border-blue-700/50 bg-blue-950/80 px-4 py-3 text-amber-50 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+            className="rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-100"
           />
           <input
             name="low_stock_limit"
             value={product.low_stock_limit}
             onChange={handleChange}
-            className="rounded-3xl border border-blue-700/50 bg-blue-950/80 px-4 py-3 text-amber-50 outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+            className="rounded-3xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-950 outline-none transition focus:border-blue-700 focus:ring-2 focus:ring-blue-100"
           />
           <button
             type="submit"
-            className="col-span-full rounded-3xl bg-gradient-to-r from-amber-400 to-amber-500 px-6 py-3 text-sm font-semibold text-blue-900 shadow-lg shadow-amber-400/20 transition hover:brightness-110"
+            className="col-span-full rounded-3xl bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-blue-800"
           >
             Update Product
           </button>
