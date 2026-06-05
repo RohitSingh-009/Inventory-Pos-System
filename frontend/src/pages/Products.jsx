@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import AdminLayout from "../layouts/AdminLayout";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 function Products() {
   const navigate = useNavigate();
@@ -65,8 +66,8 @@ function Products() {
                 <th className="px-6 py-4">Barcode</th>
                 <th className="px-6 py-4">Price</th>
                 <th className="px-6 py-4">Stock</th>
-                <th className="px-6 py-4">Action</th>
-                <th className="px-6 py-4">Delete</th>
+                <th className="px-10 py-4">Action</th>
+                
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 bg-slate-50">
@@ -82,29 +83,27 @@ function Products() {
                         {product.stock_quantity}
                       </span>
                     </td>
-                    <td className="px-6 py-4">
+                 <td className="px-6 py-4">
+                    <div className="flex items-center justify-center gap-3 ">
+                      
                       <button
                         onClick={() => navigate(`/products/edit/${product.id}`)}
-                        className="rounded-3xl bg-slate-100 px-4 py-2 text-sm font-medium text-slate-950 transition hover:bg-slate-200"
+                        className="text-blue-600 hover:text-blue-800 width"
+                        title="Edit"
                       >
-                        Edit
+                        <FiEdit size={18} />
                       </button>
 
-                      
-                    </td>
-                    <td>
+                      <button
+                        onClick={() => handleDelete(product.id)}
+                        className="text-red-600 hover:text-red-800"
+                        title="Delete"
+                      >
+                        <FiTrash2 size={18} />
+                      </button>
 
-                      <button className="rounded-3xl bg-slate-100 px-4 py-2 text-sm font-medium text-slate-950 transition hover:bg-slate-200"
-                            onClick={() =>
-                              handleDelete(product.id)
-                            }
-                            style={{
-                              marginLeft: "10px",
-                            }}
-                          >
-                            Delete
-                          </button>
-                    </td>
+                    </div>
+                  </td>
                   </tr>
                 );
               })}
