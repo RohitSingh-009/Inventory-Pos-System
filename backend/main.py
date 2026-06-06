@@ -19,7 +19,7 @@ from routes.categories import router as category_router
 from routes.products import router as product_router
 
 from routes.sales import router as sales_router
-
+from routes.employees import router as employees_router
 
 from routes.dashboard import router as dashboard_router
 from routes.reports import router as reports_router
@@ -65,6 +65,7 @@ app.include_router(auth_router)
 app.include_router(category_router)
 app.include_router(product_router)
 app.include_router(sales_router)
+app.include_router(employees_router)
 app.include_router(dashboard_router)
 app.include_router(reports_router)
 app.include_router(

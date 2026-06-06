@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 const navItems = [
   { to: "/admin/dashboard", label: "Dashboard", icon: "📊" },
   { to: "/products", label: "Products", icon: "📦" },
+  { to: "/employees", label: "Employees", icon: "👥" },
   { to: "/pos", label: "POS Billing", icon: "💳" },
   { to: "/sales", label: "Sales History", icon: "🧾" },
   { to: "/reports", label: "Reports", icon: "📈" },

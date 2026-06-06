@@ -3,6 +3,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import Login from "../pages/Login";
 import AdminDashboard from "../pages/AdminDashboard";
 import Products from "../pages/Products";
+import Employees from "../pages/Employees";
+import AddEmployee from "../pages/AddEmployee";
+import EditEmployee from "../pages/EditEmployee";
 import POS from "../pages/POS";
 import SalesHistory from "../pages/SalesHistory";
 import AddProduct from "../pages/AddProduct";
@@ -43,6 +46,39 @@ function AppRoutes() {
                   </ProtectedRoute>
             }
         />
+
+        <Route
+            path="/employees"
+            element={
+                  <ProtectedRoute>
+                    <AdminRoute>
+                        <Employees />
+                    </AdminRoute>
+                  </ProtectedRoute>
+            }
+        />
+
+        <Route
+            path="/employees/add"
+            element={
+                 <ProtectedRoute>
+                    <AdminRoute>
+                        <AddEmployee />
+                    </AdminRoute>
+                 </ProtectedRoute>
+            }
+        />   
+
+        <Route
+            path="/employees/edit/:id"
+            element={
+                 <ProtectedRoute>
+                    <AdminRoute>
+                        <EditEmployee />
+                    </AdminRoute>
+                 </ProtectedRoute>
+            }
+        /> 
 
         <Route
             path="/pos"

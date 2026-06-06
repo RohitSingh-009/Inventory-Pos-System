@@ -7,9 +7,9 @@ from database.database import get_db
 
 from models.user import User
 
-from schemas.user import LoginRequest
+from schemas.user import LoginRequest, RegisterRequest, UserResponse
 
-from utils.security import verify_password
+from utils.security import verify_password, hash_password
 from utils.jwt_handler import create_access_token
 
 router = APIRouter(
@@ -63,4 +63,38 @@ def login(
         "access_token": token,
         "role": user.role,
         "name": user.name
-    }        
+    }
+
+
+@router.post("/register", response_model=UserResponse)
+def register(
+    data: RegisterRequest,
+    db: Session = Depends(get_db)
+):
+    # Check if user already exists
+    existing_user = (
+        db.query(User)
+        .filter(User.email == data.email)
+        .first()
+    )
+
+    if existing_user:
+        raise HTTPException(
+            status_code=400,
+            detail="Email already registered"
+        )
+
+    # Create new user
+    new_user = User(
+        name=data.name,
+        email=data.email,
+        password=hash_password(data.password),
+        role=data.role,
+        is_active=True
+    )
+
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+
+    return new_user
